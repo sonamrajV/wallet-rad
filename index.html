@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RadiantArena - Token Pre Sale Wallet Checker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 RadiantArena Token Pre Sale Wallet Checker and $SUI Address Submission</h1>
+    <p class="description">Connect your MetaMask wallet to check if you're eligible or not!</p>
+    
+    <div class="wallet-section">
+      <h2>Connect MetaMask Wallet</h2>
+      <button id="connectMetaMask" class="wallet-button metamask">Connect MetaMask</button>
+      <div id="metamaskAddress" class="wallet-address"></div>
+    </div>
+
+    <div id="suiAddressSection" class="sui-address-section" style="display: none;">
+      <h2>💰 Previously Submitted $SUI Address</h2>
+      <div id="suiAddressDisplay" class="sui-address-display"></div>
+      <button id="editSuiButton" class="wallet-button edit">Edit $SUI Address</button>
+    </div>
+
+    <div id="eligibilitySection" class="eligibility-section" style="display: none;">
+      <h2>🎯 Eligibility Status</h2>
+      <div id="eligibilityStatus" class="eligibility-status"></div>
+      <div id="eligibilityDetails" class="eligibility-details"></div>
+    </div>
+
+    <button id="clearData" class="clear-button">Clear Data & Check Again</button>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

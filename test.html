@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Test</title>
+</head>
+<body>
+    <h1>Server Connection Test</h1>
+    <button onclick="testHealth()">Test Health Endpoint</button>
+    <button onclick="testEligibility()">Test Eligibility Endpoint</button>
+    <div id="results"></div>
+
+    <script>
+        async function testHealth() {
+            try {
+                const response = await fetch('http://localhost:3000/health');
+                const data = await response.json();
+                document.getElementById('results').innerHTML = `<p>Health: ${JSON.stringify(data)}</p>`;
+            } catch (error) {
+                document.getElementById('results').innerHTML = `<p style="color: red;">Health Error: ${error.message}</p>`;
+            }
+        }
+
+        async function testEligibility() {
+            try {
+                const response = await fetch('http://localhost:3000/check-eligibility', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ metamaskAddress: '0x201992904b6dd0c691be271013228ba6241dfc8c' })
+                });
+                const data = await response.json();
+                document.getElementById('results').innerHTML += `<p>Eligibility: ${JSON.stringify(data)}</p>`;
+            } catch (error) {
+                document.getElementById('results').innerHTML += `<p style="color: red;">Eligibility Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html> 
