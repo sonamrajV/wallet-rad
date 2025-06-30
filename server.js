@@ -26,7 +26,8 @@ const eligibleSuiAddresses = [
   '0x3b994b7C1A7cb446AAbBFa4292f540A07141b318',
   '0x9E039b1479de2F332D83ED812b117265f9Ad1212',
   '0x0517eabe74fbcc53d798fcdb63004d20bc6fa0de',
-  '0x94b514f2db06724c03701f2e175fc3f3460cc460'
+  '0x94b514f2db06724c03701f2e175fc3f3460cc460',
+  '0xFa5f5aB5e3Fe8149a33efdd1Ed9dd9Ab57ad7fe7'
 ];
 
 // Endpoint to check eligibility
