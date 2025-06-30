@@ -20,7 +20,7 @@ app.use(express.json());
 // Store eligible addresses
 const eligibleSuiAddresses = [
   '0x85b4b42a73a6f118f9460af72280baae66bd34df',
-  '0x201992904b6dd0c691be271013228ba6241dfc8c',
+  '0xcC996614652c3d5464bea9003E6f4C3346D8B74d',
   '0x1A7dD10f02D42802726c85B7BCa4B352517F1cBa',
   '0xE529b5634590989eBc83078f172D816ccE217162',
   '0x3b994b7C1A7cb446AAbBFa4292f540A07141b318',
