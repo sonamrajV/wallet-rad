@@ -1,91 +1,53 @@
-# 🚀 RadiantArena Token Pre Sale Wallet Checker
+# RadiantArena Token Pre Sale Wallet Checker
 
-A web application for checking wallet eligibility and collecting $SUI wallet addresses for the RadiantArena token pre-sale.
+This project is a website where users can connect their crypto wallet (MetaMask or Phantom) to check if they are eligible for the RadiantArena token pre-sale. If eligible, they can submit their $SUI address. The backend saves all submissions.
 
-## 🛠️ Setup & Installation
+## Features
+- Connect with MetaMask (Ethereum) or Phantom (Solana)
+- Check wallet eligibility for the pre-sale
+- Submit $SUI address if eligible
+- See your previous submission if you return
+- Modern, responsive UI
+- Node.js backend with CSV storage
 
-1. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
+## Project Structure
+- `index.html` — Main web page
+- `styles.css` — Styling
+- `script.js` — Frontend logic
+- `server.js` — Node.js backend
+- `submissions.csv` — Stores submissions
 
-2. **Start the Server:**
-   ```bash
-   node server.js
-   ```
-   
-   You should see:
-   ```
-   🚀 RadiantArena Server running on http://localhost:3000
-   📝 Submissions will be saved to submissions.csv
-   ✅ Server is ready to handle requests
-   ```
+## Setup Instructions
 
-## 🌐 Accessing the Application
+### 1. Install Dependencies
+```
+npm install express cors
+```
 
-**IMPORTANT:** To avoid server connection errors, access the application through the server URL:
+### 2. Run the Server
+```
+node server.js
+```
+The server will start on [http://localhost:3000](http://localhost:3000)
 
-### ✅ Correct Way:
-1. Start the server: `node server.js`
-2. Open your browser and go to: **http://localhost:3000**
-3. The application will load and work correctly
+### 3. Open the App
+Open your browser and go to [http://localhost:3000](http://localhost:3000)
 
-### ❌ Wrong Way:
-- Don't open `index.html` directly as a file (file:// protocol)
-- This will cause "Could not connect to the server" errors
+## Usage
+1. Click "Connect Wallet" and connect MetaMask or Phantom.
+2. If eligible, enter your $SUI address and submit.
+3. If you return, your previous submission will be shown.
 
-## 🔧 Features
+## Customizing Eligibility
+- Edit the `eligibleAddresses` array in `server.js` to add or remove eligible wallet addresses.
 
-- **MetaMask Wallet Connection**: Connect your MetaMask wallet
-- **Eligibility Checking**: Check if your wallet is eligible for the RadiantArena pre-sale
-- **$SUI Address Submission**: Submit your $SUI wallet address
-- **Address Persistence**: Previously submitted addresses are saved and can be edited
-- **Clean UI**: Modern, responsive design with yellowish background theme
+## Troubleshooting
+- **Wallet not detected:** Make sure MetaMask or Phantom is installed in your browser.
+- **Eligibility issues:** Double-check your wallet address is in the eligible list in `server.js`.
+- **Server errors:** Ensure Node.js is installed and you ran `npm install`.
 
-## 📋 Eligible Addresses
+## Security Note
+- This project is for demonstration purposes. For production, use secure storage and authentication.
 
-The following addresses are eligible for testing:
-- `0x1234567890abcdef1234567890abcdef12345678`
-- `0x201992904b6dd0c691be271013228ba6241dfc8c`
-- `0x3b994b7C1A7cb446AAbBFa4292f540A07141b318`
-- `0x0e61bAbf5398d41339Be5f6dD2bf34045Ab54EaE`
-- `0x0517eabe74fbcc53d798fcdb63004d20bc6fa0de`
-- `0x94b514f2db06724c03701f2e175fc3f3460cc460`
-- `0x9E039b1479de2F332D83ED812b117265f9Ad1212`
-- `0xE529b5634590989eBc83078f172D816ccE217162`
-
-## 🐛 Troubleshooting
-
-### Server Connection Error
-If you see "Could not connect to the server":
-
-1. **Make sure the server is running:**
-   ```bash
-   node server.js
-   ```
-
-2. **Access via correct URL:**
-   - Use: `http://localhost:3000`
-   - Don't open `index.html` directly
-
-3. **Check browser console:**
-   - Press F12 to open developer tools
-   - Look for error messages in the Console tab
-
-### MetaMask Not Installed
-- Install MetaMask browser extension
-- Make sure you're on a supported network
-
-## 📁 Files
-
-- `index.html` - Main application interface
-- `script.js` - Frontend JavaScript logic
-- `styles.css` - Application styling
-- `server.js` - Backend server
-- `submissions.csv` - Submitted addresses (created automatically)
-
-## 🔒 Security Notes
-
-- This is a development version
-- In production, use environment variables for sensitive data
-- Consider using a database instead of CSV files for submissions 
+## License
+MIT 

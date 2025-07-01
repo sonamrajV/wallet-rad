@@ -5,32 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RadiantArena - Token Pre Sale Wallet Checker</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="container">
-    <h1>🚀 RadiantArena Token Pre Sale Wallet Checker and $SUI Address Submission</h1>
-    <p class="description">Connect your MetaMask wallet to check if you're eligible or not!</p>
-    
-    <div class="wallet-section">
-      <h2>Connect MetaMask Wallet</h2>
-      <button id="connectMetaMask" class="wallet-button metamask">Connect MetaMask</button>
-      <div id="metamaskAddress" class="wallet-address"></div>
-    </div>
-
-    <div id="suiAddressSection" class="sui-address-section" style="display: none;">
-      <h2>💰 Previously Submitted $SUI Address</h2>
-      <div id="suiAddressDisplay" class="sui-address-display"></div>
-      <button id="editSuiButton" class="wallet-button edit">Edit $SUI Address</button>
-    </div>
-
-    <div id="eligibilitySection" class="eligibility-section" style="display: none;">
-      <h2>🎯 Eligibility Status</h2>
-      <div id="eligibilityStatus" class="eligibility-status"></div>
-      <div id="eligibilityDetails" class="eligibility-details"></div>
-    </div>
-
-    <button id="clearData" class="clear-button">Clear Data & Check Again</button>
+<body class="min-h-screen w-full">
+  <div class="fixed inset-0 w-full h-full z-0">
+    <img src="bg.jpg" alt="Gaming Background" class="w-full h-full object-cover object-center fixed inset-0 select-none pointer-events-none" />
+    <div class="absolute inset-0 bg-black bg-opacity-70"></div>
   </div>
+
+  <!-- Header with logo and text -->
+  <header class="flex items-center gap-3 p-4 absolute top-0 left-0 z-50">
+    <img src="logo.png" alt="Radiant Arena Logo" class="h-10 w-10 object-contain drop-shadow-lg">
+    <span class="text-white text-2xl font-bold drop-shadow-lg tracking-wide flex items-center h-10">Radiant Arena</span>
+  </header>
+
+  <main class="flex flex-col items-center justify-center min-h-screen relative z-10">
+    <div class="backdrop-blur-md bg-black bg-opacity-40 rounded-2xl shadow-2xl p-8 w-full max-w-xl border border-yellow-400/30">
+      <h1 class="text-white text-2xl font-bold mb-2 text-center">🚀 RadiantArena Token Pre Sale Wallet Checker and $SUI Address Submission</h1>
+      <p class="text-gray-200 mb-6 text-center">Connect your wallet to check if you're eligible or not!</p>
+      
+      <div class="wallet-section mb-6">
+        <div class="flex justify-center">
+          <button id="connectWallet" class="wallet-button connect">Connect Your Wallet</button>
+        </div>
+        <div id="walletAddress" class="wallet-address"></div>
+      </div>
+
+      <!-- Wallet Selection Modal -->
+      <div id="walletModal" class="wallet-modal" style="display: none;">
+        <div class="wallet-modal-content">
+          <h3>Select a Wallet</h3>
+          <div id="walletOptions" class="wallet-options"></div>
+          <button id="closeWalletModal" class="close-modal">Close</button>
+        </div>
+      </div>
+
+      <div id="suiAddressSection" class="sui-address-section" style="display: none;">
+        <h2>💰 Previously Submitted $SUI Address</h2>
+        <div id="suiAddressDisplay" class="sui-address-display"></div>
+        <button id="editSuiButton" class="wallet-button edit">Edit $SUI Address</button>
+      </div>
+
+      <div id="eligibilitySection" class="eligibility-section" style="display: none;">
+        <h2>🎯 Eligibility Status</h2>
+        <div id="eligibilityStatus" class="eligibility-status"></div>
+        <div id="eligibilityDetails" class="eligibility-details"></div>
+      </div>
+
+      <button id="clearData" class="clear-button mt-4">Clear Data & Check Again</button>
+    </div>
+  </main>
   
   <script src="script.js"></script>
 </body>
