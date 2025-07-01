@@ -75,42 +75,42 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       id: 'metamask',
       name: 'MetaMask',
-      icon: 'https://raw.githubusercontent.com/MetaMask/brand-resources/master/SVG/metamask-fox.svg',
+      icon: './metamask.png',
       detect: () => window.ethereum && window.ethereum.isMetaMask,
       type: 'evm',
     },
     {
       id: 'phantom-sol',
       name: 'Phantom (Solana)',
-      icon: 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Phantom.png',
+      icon: './phantom.png',
       detect: () => window.solana && window.solana.isPhantom,
       type: 'solana',
     },
     {
       id: 'solflare',
       name: 'Solflare',
-      icon: 'https://solflare.com/favicon.ico',
+      icon: '🔥',
       detect: () => window.solflare && window.solflare.isSolflare,
       type: 'solana',
     },
     {
       id: 'coinbase',
       name: 'Coinbase Wallet',
-      icon: 'https://avatars.githubusercontent.com/u/1885080?s=200&v=4',
+      icon: '🪙',
       detect: () => window.ethereum && window.ethereum.isCoinbaseWallet,
       type: 'evm',
     },
     {
       id: 'brave',
       name: 'Brave Wallet',
-      icon: 'https://brave.com/static-assets/images/brave-logo.svg',
+      icon: '🦁',
       detect: () => window.ethereum && window.ethereum.isBraveWallet,
       type: 'evm',
     },
     {
       id: 'trust',
       name: 'Trust Wallet',
-      icon: 'https://trustwallet.com/assets/images/media/assets/logo.png',
+      icon: '🛡️',
       detect: () => window.ethereum && window.ethereum.isTrust,
       type: 'evm',
     },
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
       detected.push({
         id: 'phantom-evm-forced',
         name: 'Phantom (EVM)',
-        icon: 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Phantom.png',
+        icon: './phantom.png',
         type: 'evm',
         forced: true
       });
