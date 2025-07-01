@@ -43,22 +43,27 @@ function saveSubmission(wallet, suiAddress) {
   fs.appendFileSync(submissionsFile, `${wallet},${suiAddress}\n`);
 }
 
-// API: Check eligibility
-app.get('/api/check-eligibility', (req, res) => {
-  const address = (req.query.address || '').toLowerCase();
+// Health check endpoint for testing
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
+// API: Check eligibility (POST) - matches frontend
+app.post('/check-eligibility', (req, res) => {
+  const address = (req.body.address || '').toLowerCase();
   const eligible = eligibleAddresses.map(a => a.toLowerCase()).includes(address);
   res.json({ eligible });
 });
 
-// API: Get previous submission
-app.get('/api/get-submission', (req, res) => {
+// API: Get previous $SUI address submission
+app.get('/get-sui-address', (req, res) => {
   const address = (req.query.address || '').toLowerCase();
   const submissions = loadSubmissions();
   res.json({ suiAddress: submissions[address] || null });
 });
 
-// API: Submit $SUI address
-app.post('/api/submit-sui', (req, res) => {
+// API: Submit $SUI address - matches frontend
+app.post('/submit-sui-address', (req, res) => {
   const { wallet, suiAddress } = req.body;
   if (!wallet || !suiAddress) return res.json({ success: false, error: 'Missing data.' });
   const address = wallet.toLowerCase();
@@ -68,18 +73,6 @@ app.post('/api/submit-sui', (req, res) => {
   if (submissions[address]) return res.json({ success: false, error: 'Already submitted.' });
   saveSubmission(address, suiAddress);
   res.json({ success: true });
-});
-
-// Health check endpoint for testing
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
-
-// POST eligibility endpoint for radiant-arena-dapp.html
-app.post('/check-eligibility', (req, res) => {
-  const address = (req.body.metamaskAddress || '').toLowerCase();
-  const eligible = eligibleAddresses.map(a => a.toLowerCase()).includes(address);
-  res.json({ eligible });
 });
 
 // Serve index.html for all other routes (SPA fallback)
