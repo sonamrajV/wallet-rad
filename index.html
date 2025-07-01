@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Wagmi and related libraries -->
+  <script src="https://unpkg.com/@wagmi/core@1.4.7/dist/wagmi-core.umd.js"></script>
+  <script src="https://unpkg.com/wagmi@1.4.7/dist/wagmi.umd.js"></script>
+  <script src="https://unpkg.com/viem@1.19.9/dist/viem.umd.js"></script>
+  <script src="https://unpkg.com/@solana/web3.js@1.87.6/lib/index.iife.min.js"></script>
+  <script src="https://unpkg.com/bs58@5.0.0/dist/bs58.bundle.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 </head>
 <body class="min-h-screen w-full">
   <div class="fixed inset-0 w-full h-full z-0">
@@ -41,16 +50,28 @@
         </div>
       </div>
 
-      <div id="suiAddressSection" class="sui-address-section" style="display: none;">
-        <h2>💰 Previously Submitted $SUI Address</h2>
-        <div id="suiAddressDisplay" class="sui-address-display"></div>
-        <button id="editSuiButton" class="wallet-button edit">Edit $SUI Address</button>
+      <div id="walletStatusSection" class="wallet-status-section" style="display: none;">
+        <h2>🔗 Connected Wallets</h2>
+        <div id="evmWalletStatus" class="wallet-status"></div>
+        <div id="solanaWalletStatus" class="wallet-status"></div>
+        <button id="signMessageBtn" class="wallet-button sign">Sign Message to Verify</button>
       </div>
 
       <div id="eligibilitySection" class="eligibility-section" style="display: none;">
         <h2>🎯 Eligibility Status</h2>
         <div id="eligibilityStatus" class="eligibility-status"></div>
         <div id="eligibilityDetails" class="eligibility-details"></div>
+      </div>
+
+      <div id="suiAddressSection" class="sui-address-section" style="display: none;">
+        <h2>💰 $SUI Address Submission</h2>
+        <div id="suiAddressDisplay" class="sui-address-display"></div>
+        <button id="editSuiButton" class="wallet-button edit">Update $SUI Address</button>
+      </div>
+
+      <div id="signatureSection" class="signature-section" style="display: none;">
+        <h2>✍️ Wallet Signature Verification</h2>
+        <div id="signatureStatus" class="signature-status"></div>
       </div>
 
       <button id="clearData" class="clear-button mt-4">Clear Data & Check Again</button>

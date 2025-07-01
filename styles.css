@@ -162,13 +162,49 @@ label {
 .close-modal:hover {
   background: #ef4444;
 }
-.eligibility-section, .sui-address-section {
+.eligibility-section, .sui-address-section, .wallet-status-section, .signature-section {
   background: #23232b;
   border-radius: 1rem;
   padding: 1.25rem 1rem;
   margin: 1.5rem 0 0 0;
   color: #fff;
   box-shadow: 0 2px 12px #0004;
+}
+
+.wallet-status {
+  color: #facc15;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  word-break: break-all;
+}
+
+.signature-status {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.signature-status.success {
+  color: #22c55e;
+}
+
+.signature-status.error {
+  color: #ef4444;
+}
+
+.wallet-button.sign {
+  background: #8b5cf6;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.5rem;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+.wallet-button.sign:hover {
+  background: #7c3aed;
 }
 .eligibility-status {
   font-size: 1.2rem;
@@ -224,4 +260,16 @@ label {
   .backdrop-blur-md {
     padding: 1.2rem 0.5rem !important;
   }
+}
+.success-message {
+  color: #22c55e;
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.5rem 0;
+  text-align: center;
+}
+.error-message {
+  color: #ef4444;
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.5rem 0;
+  text-align: center;
 } 
