@@ -7,30 +7,32 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Wagmi and related libraries -->
-  <script src="https://unpkg.com/@wagmi/core@1.4.7/dist/wagmi-core.umd.js"></script>
-  <script src="https://unpkg.com/wagmi@1.4.7/dist/wagmi.umd.js"></script>
-  <script src="https://unpkg.com/viem@1.19.9/dist/viem.umd.js"></script>
-  <script src="https://unpkg.com/@solana/web3.js@1.87.6/lib/index.iife.min.js"></script>
-  <script src="https://unpkg.com/bs58@5.0.0/dist/bs58.bundle.js"></script>
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 </head>
 <body class="min-h-screen w-full">
+  <div id="radBackground"></div>
   <div class="fixed inset-0 w-full h-full z-0">
     <img src="bg.jpg" alt="Gaming Background" class="w-full h-full object-cover object-center fixed inset-0 select-none pointer-events-none" />
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
   </div>
 
-  <!-- Header with logo and text -->
-  <header class="flex items-center gap-3 p-4 absolute top-0 left-0 z-50">
-    <img src="logo.png" alt="Radiant Arena Logo" class="h-10 w-10 object-contain drop-shadow-lg">
-    <span class="text-white text-2xl font-bold drop-shadow-lg tracking-wide flex items-center h-10">Radiant Arena</span>
+  <!-- Header with logo, text, wallet address, and disconnect button in a single line -->
+  <header class="flex items-center gap-3 p-4 absolute top-0 left-0 z-50 w-full" style="justify-content: flex-start;">
+    <a href="https://www.radiantarena.com/" target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+      <div class="header-brand flex items-center gap-2 px-3 py-1">
+        <div style="position: relative; width: 40px; height: 40px;">
+          <img src="logo.png" alt="Radiant Arena Logo" class="h-10 w-10 object-contain drop-shadow-lg">
+        </div>
+        <span class="text-white text-2xl font-bold drop-shadow-lg tracking-wide flex items-center">Radiant Arena</span>
+      </div>
+    </a>
+    <div id="walletStatusBar" class="wallet-status-bar ml-auto flex items-center gap-2">
+      <span id="walletAddressTop" class="wallet-address" style="margin: 0;"></span>
+      <button id="disconnectWallet" class="wallet-button" style="background: #e53e3e; color: #fff; padding: 0.5rem 1rem; font-size: 1rem;">Disconnect</button>
+    </div>
   </header>
 
-  <main class="flex flex-col items-center justify-center min-h-screen relative z-10">
-    <div class="backdrop-blur-md bg-black bg-opacity-40 rounded-2xl shadow-2xl p-8 w-full max-w-xl border border-yellow-400/30">
+  <main class="flex flex-col items-center justify-center min-h-screen relative z-10 pt-24 md:pt-20">
+    <div class="backdrop-blur-md bg-black bg-opacity-30 rounded-2xl shadow-2xl p-8 w-full max-w-xl border border-yellow-400/30">
       <h1 class="text-white text-2xl font-bold mb-2 text-center">🚀 RadiantArena Token Pre Sale Wallet Checker and $SUI Address Submission</h1>
       <p class="text-gray-200 mb-6 text-center">Connect your wallet to check if you're eligible or not!</p>
       
@@ -50,34 +52,27 @@
         </div>
       </div>
 
-      <div id="walletStatusSection" class="wallet-status-section" style="display: none;">
-        <h2>🔗 Connected Wallets</h2>
-        <div id="evmWalletStatus" class="wallet-status"></div>
-        <div id="solanaWalletStatus" class="wallet-status"></div>
-        <button id="signMessageBtn" class="wallet-button sign">Sign Message to Verify</button>
+      <div id="suiAddressSection" class="sui-address-section" style="display: none;">
+        <h2>💰 Previously Submitted $SUI Address</h2>
+        <div id="suiAddressDisplay" class="sui-address-display"></div>
       </div>
 
       <div id="eligibilitySection" class="eligibility-section" style="display: none;">
-        <h2>🎯 Eligibility Status</h2>
+        <h2 id="eligibilityHeader">🎯 Eligibility Status</h2>
         <div id="eligibilityStatus" class="eligibility-status"></div>
         <div id="eligibilityDetails" class="eligibility-details"></div>
       </div>
 
-      <div id="suiAddressSection" class="sui-address-section" style="display: none;">
-        <h2>💰 $SUI Address Submission</h2>
-        <div id="suiAddressDisplay" class="sui-address-display"></div>
-        <button id="editSuiButton" class="wallet-button edit">Update $SUI Address</button>
+      <!-- Social icons bar inside the card -->
+      <div class="flex justify-center items-center gap-6 w-full mt-8" style="position: relative;">
+        <a href="https://discord.gg/WmYmTFbFuy" target="_blank" title="Discord" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" style="width:32px;height:32px;filter:brightness(0) invert(1);"></a>
+        <a href="https://x.com/radiantarena" target="_blank" title="Twitter" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style="width:32px;height:32px;filter:brightness(0) invert(1);"></a>
+        <a href="https://t.me/RadiantArena" target="_blank" title="Telegram" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" style="width:32px;height:32px;filter:brightness(0) invert(1);"></a>
       </div>
-
-      <div id="signatureSection" class="signature-section" style="display: none;">
-        <h2>✍️ Wallet Signature Verification</h2>
-        <div id="signatureStatus" class="signature-status"></div>
-      </div>
-
-      <button id="clearData" class="clear-button mt-4">Clear Data & Check Again</button>
     </div>
   </main>
-  
+
   <script src="script.js"></script>
+  <div id="radBullets" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1000;"></div>
 </body>
 </html>

@@ -1,22 +1,27 @@
 {
-  "name": "radiant-arena-token-presale-checker",
+  "name": "radiantarena-token-presale",
   "version": "1.0.0",
-  "description": "RadiantArena Token Pre Sale Wallet Checker",
+  "description": "RadiantArena token pre-sale wallet checker and $SUI address collector.",
   "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "firebase": "^10.7.1",
-    "ethers": "^6.8.1",
-    "@solana/web3.js": "^1.87.6",
-    "bs58": "^5.0.0",
-    "crypto": "^1.0.1"
+    "cors": "^2.8.5"
   },
-  "keywords": ["token", "presale", "wallet", "checker", "wagmi", "phantom", "firebase"],
-  "author": "",
+  "keywords": [
+    "radiantarena",
+    "token",
+    "presale",
+    "sui",
+    "wallet",
+    "checker"
+  ],
+  "author": "RadiantArena",
   "license": "MIT"
 } 
