@@ -31,6 +31,7 @@ const eligibleAddresses = [
   '0x0e302F00bA592BD497EC7d0b0FC001d03cFaeb8d',
   '0xFa5f5aB5e3Fe8149a33efdd1Ed9dd9Ab57ad7fe7',
   '0xcC996614652c3d5464bea9003E6f4C3346D8B74d',
+  '0x77bdd4aa10049b0fdf2fc7b25b6232f77c8c7e10',
   '8sPpz4zmSBcettu3yKHRJTkGvXLmVrKmoiVytBJzuQhw'
 ];
 
