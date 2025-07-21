@@ -1,98 +1,161 @@
-# 🚀 RadiantArena Token Pre Sale Wallet Checker
+# 0G Chain Smart Contract Deployment
 
-A web application for checking wallet eligibility and collecting $SUI wallet addresses for the RadiantArena token pre-sale.
+This project demonstrates how to deploy smart contracts on 0G Chain - an EVM-compatible blockchain with built-in AI capabilities.
 
-## 🛠️ Setup & Installation
+## 🚀 Why 0G Chain?
 
-1. **Install Dependencies:**
+- **⚡ High Performance**: 2,500 TPS with 1-2 second block times
+- **💰 Low Fees**: Fraction of mainnet costs
+- **🔧 Latest EVM**: Pectra & Cancun-Deneb support
+- **🤖 AI Integration**: Built-in AI capabilities
+- **🛠️ Familiar Tools**: Use Hardhat, Foundry, Remix
+
+## 📋 Prerequisites
+
+- Node.js 16+ installed
+- A wallet with testnet OG tokens (get from [0G Chain faucet](https://faucet.0g.ai))
+- Basic Solidity knowledge
+
+## 🛠️ Setup
+
+1. **Install dependencies**:
    ```bash
    npm install
    ```
 
-2. **Start the Server:**
+2. **Configure environment**:
    ```bash
-   node server.js
+   cp env.example .env
    ```
    
-   You should see:
-   ```
-   🚀 RadiantArena Server running on http://localhost:3000
-   📝 Submissions will be saved to submissions.csv
-   ✅ Server is ready to handle requests
-   ```
+   Edit `.env` and add your:
+   - `PRIVATE_KEY`: Your wallet private key (without 0x prefix)
+   - `ETHERSCAN_API_KEY`: Optional, for contract verification
 
-## 🌐 Accessing the Application
+3. **Get testnet tokens**:
+   - Visit [0G Chain Faucet](https://faucet.0g.ai)
+   - Request testnet OG tokens for your wallet
 
-**IMPORTANT:** To avoid server connection errors, access the application through the server URL:
+## 📦 Smart Contract
 
-### ✅ Correct Way:
-1. Start the server: `node server.js`
-2. Open your browser and go to: **http://localhost:3000**
-3. The application will load and work correctly
+The project includes a simple ERC-20 token contract (`KYUB.sol`) with:
+- Token name: KYUB
+- Token symbol: $KYU
+- Total supply: 143,000,000 tokens
+- Token transfers
+- Balance tracking
+- Total supply management
 
-### ❌ Wrong Way:
-- Don't open `index.html` directly as a file (file:// protocol)
-- This will cause "Could not connect to the server" errors
+## 🚀 Deployment
 
-## 🔧 Features
+### Compile the contract:
+```bash
+npm run compile
+```
 
-- **MetaMask Wallet Connection**: Connect your MetaMask wallet
-- **Eligibility Checking**: Check if your wallet is eligible for the RadiantArena pre-sale
-- **$SUI Address Submission**: Submit your $SUI wallet address
-- **Address Persistence**: Previously submitted addresses are saved and can be edited
-- **Clean UI**: Modern, responsive design with yellowish background theme
+### Deploy to 0G Chain Testnet:
+```bash
+npm run deploy:testnet
+```
 
-## 📋 Eligible Addresses
+### Run tests:
+```bash
+npm run test
+```
 
-The following addresses are eligible for testing:
-- `0x1234567890abcdef1234567890abcdef12345678`
-- `0x201992904b6dd0c691be271013228ba6241dfc8c`
-- `0x3b994b7C1A7cb446AAbBFa4292f540A07141b318`
-- `0x0e61bAbf5398d41339Be5f6dD2bf34045Ab54EaE`
-- `0x0517eabe74fbcc53d798fcdb63004d20bc6fa0de`
-- `0x94b514f2db06724c03701f2e175fc3f3460cc460`
-- `0x9E039b1479de2F332D83ED812b117265f9Ad1212`
-- `0xE529b5634590989eBc83078f172D816ccE217162`
+### Verify contract (optional):
+```bash
+npm run verify
+```
 
-## 🐛 Troubleshooting
+## 🔗 Network Configuration
 
-### Server Connection Error
-If you see "Could not connect to the server":
+| Network | RPC URL | Chain ID | Explorer |
+|---------|---------|----------|----------|
+| Testnet | `https://evmrpc-testnet.0g.ai` | 16601 | [Testnet Explorer](https://testnet-explorer.0g.ai) |
 
-1. **Make sure the server is running:**
-   ```bash
-   node server.js
-   ```
+## 📁 Project Structure
 
-2. **Access via correct URL:**
-   - Use: `http://localhost:3000`
-   - Don't open `index.html` directly
+```
+├── contracts/
+│   └── MyToken.sol          # Main smart contract
+├── scripts/
+│   └── deploy.js            # Deployment script
+├── test/
+│   └── MyToken.test.js      # Contract tests
+├── hardhat.config.js        # Hardhat configuration
+├── package.json             # Dependencies
+├── env.example              # Environment template
+└── README.md               # This file
+```
 
-3. **Check browser console:**
-   - Press F12 to open developer tools
-   - Look for error messages in the Console tab
+## 🔧 Configuration Details
 
-### MetaMask Not Installed
-- Install MetaMask browser extension
-- Make sure you're on a supported network
+### Hardhat Configuration
+- **Solidity Version**: 0.8.19
+- **EVM Version**: Cancun (latest EVM features)
+- **Optimizer**: Enabled with 200 runs
+- **Network**: 0G Chain Testnet (Chain ID: 16601)
 
-## 📁 Files
+### Contract Features
+- **Token Name**: KYUB
+- **Token Symbol**: $KYU
+- **Total Supply**: 143,000,000 tokens (18 decimals)
+- **Transfer Function**: Standard token transfer with balance checks
+- **Public Variables**: `balances` mapping and `totalSupply`
 
-- `index.html` - Main application interface
-- `script.js` - Frontend JavaScript logic
-- `styles.css` - Application styling
-- `server.js` - Backend server
-- `submissions.csv` - Submitted addresses (created automatically)
+## 🧪 Testing
 
-## 🔒 Security Notes
+The test suite covers:
+- ✅ Contract deployment
+- ✅ Token transfers
+- ✅ Balance updates
+- ✅ Error handling
+- ✅ Edge cases
 
-- This is a development version
-- In production, use environment variables for sensitive data
-- Consider using a database instead of CSV files for submissions 
+Run tests with:
+```bash
+npm run test
+```
 
-<div id="radBackground"></div> 
+## 🔍 Verification
 
-<body class="min-h-screen w-full">
-  <div id="radBackground"></div>
-  <div class="fixed inset-0 w-full h-full z-0">
-    ... 
+After deployment, verify your contract on the 0G Chain explorer:
+1. Visit [Testnet Explorer](https://testnet-explorer.0g.ai)
+2. Search for your contract address
+3. Click "Verify Contract" (if API key is configured)
+
+## 🆘 Troubleshooting
+
+### Common Issues:
+
+1. **"Invalid opcode" error**:
+   - Ensure you're using `evmVersion: "cancun"` in hardhat config
+   - Check Solidity version compatibility
+
+2. **RPC connection issues**:
+   - Verify the RPC URL: `https://evmrpc-testnet.0g.ai`
+   - Check your internet connection
+
+3. **Insufficient gas**:
+   - Ensure your wallet has enough OG tokens for gas fees
+   - Get testnet tokens from the faucet
+
+4. **Private key issues**:
+   - Make sure your private key is correct (without 0x prefix)
+   - Ensure the wallet has testnet tokens
+
+## 🔗 Useful Links
+
+- [0G Chain Documentation](https://docs.0g.ai)
+- [0G Chain Faucet](https://faucet.0g.ai)
+- [Testnet Explorer](https://testnet-explorer.0g.ai)
+- [0G Chain Discord](https://discord.gg/0gchain)
+
+## 📄 License
+
+MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Happy deploying on 0G Chain! 🚀** 

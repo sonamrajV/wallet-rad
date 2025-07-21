@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-      const response = await fetch('/check-eligibility', {
+      const response = await fetch('http://localhost:10000/check-eligibility', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
     submissionStatus.textContent = 'Submitting...';
     try {
       // Save to server as before
-      const response = await fetch('/submit-sui-address', {
+      const response = await fetch('http://localhost:10000/submit-sui-address', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ metamaskAddress: walletAddress, suiAddress })
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to check server for existing submission
   async function checkServerForSubmission(walletAddress) {
     try {
-      const response = await fetch(`/check-submission/${walletAddress}`);
+      const response = await fetch(`http://localhost:10000/check-submission/${walletAddress}`);
       if (response.ok) {
         const result = await response.json();
         if (result.hasSubmitted && result.suiAddress) {
