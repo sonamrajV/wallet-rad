@@ -128,6 +128,9 @@ const eligibleAddresses = [
   '0x439f1218e79c1031d5c03e24bc9a058efaa6942b',
   '0xe0a4a66aa9f3a43d8fbec56f1fbca6c581e3e9f7',
   '0x81edf748f49763f2efd9e7b20285af2d996281cb',
+  '0xc125C7d8aa7D1fc07C2b77FaF57783946A3629F1',
+  '0x8d6A382EDcBa35cddE8950EeF77d895F587CbdAa',
+  
   // Solana addresses
   '8EUa5n6HeuKuh9UFJPjnuWLqu1434gCERFaxpmwNiR7X',
   'trcLtquZ9FQaZ5epGmd9KxYbDmjLugRaGnLpYKe2xsC',
