@@ -195,6 +195,7 @@ const eligibleAddresses = [
   '8YgwczhwwDAEzZg6KkRnW3aP99mMJ4N424e1pJ3AgmZq',
   'Hp6Qyx3K9McpE1w2V7LbNU1NpwjwpqRiiggrcveNrtHF',
   '4r7KKCdZ89CYQ2FTB1P1RDEHVQuGWyzNE4x8drPC2uvR',
+  '43275o1S66GgVSJbJWGuiw9r7pocc3Jc6qLBt9QRYTBf',
 ];
 
 // Google Sheets setup
